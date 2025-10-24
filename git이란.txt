@@ -1,0 +1,99 @@
+git 
+- 버전관리프로그램
+
+명령어 
+1. git config : 환경설정 명령어
+	ex) git config --global user.name(email) "이름(이메일)"
+	git config --list => 기본적으로 설정된 정보 확인
+
+2. git init : 저장소 초기화
+	(Initialized empty Git repository in C:/test/.git/)
+	저장소가 뭐임?
+		로컬저장소 : 컴터 내부
+		원격저장소 : 공유서버, 클라우드,github 등 타인과 교류가능
+
+3. pwd(리룩스 명령어, git 명령어 아님) : 나의 현재 위치
+
+4. cd c:/~(리룩스 명령어, 이동하기, change diretory)
+
+5. git branch -m 이름 : 이름으로 branch이름 바꾸기(요즘은 main 많이 씀)
+
+6. git status : 현재 git 상태 확인
+	상태 확인해서 머함? 새로 작성된 파일 여부, comit 여부 등...
+
+7. git add 파일명 : staged 영역으로 옮기기
+
+8. git commit -m "커밋메세지" : 로컬 저장소로 이동(관리대상이 됨)	(7,8번은 세트메뉴)
+	$ git commit -m "first commit"
+	[main (root-commit) ec6de6f] first commit
+ 	1 file changed, 0 insertions(+), 0 deletions(-)
+ 	create mode 100644 test1.txt
+
+	메세지 입력 누락 시 - vi편집기 호출됨, esc -> i -> 메세지 입력 -> esc -> 편집기 하단에 :wq 
+
+9. git commit -a -m "commit 메세지" : add와 commit을 한번에 해줌 (단, 이미 저장되있는 파일 수정시에만 신규파일x)
+
+* 로컬저장소에 저장된 파일 수정 시
+1) git add + git commit
+2) git commit -a -m ""
+
+10. git log --graph : 지금까지 작업 로그를 보여줌
+
+11. git restore 파일명 : 수정된 부분을 지운 후 로컬저장소에 올림
+
+12. git commit --amend : 직전 commit 취소
+	왜 함?1) commit 메세지 수정하기 위해서
+		2) 이전 commit과 함께 추가할 파일이 있는 경우 등 
+
+13. git revert 되돌리고자하는sha값 : 원하는 부분까지 commit 취소
+	commit message는 남아있음
+	삭제되는 commit과 연결된 코드는 삭제or보존 선택가능
+	revert에 대한 commit도 남김
+
+14. git reset --soft sha : 내가 지정한 sha의 이전 값까지 commit 메세지 날라감, 
+				내용은 안날라감, 
+				로컬 저장소에 있던게 staged 영역으로 내려옴
+		--mixed sha : soft와 유사하나 파일이 unstaged 영역까지 내려옴
+		--hard sha : commit 모두 제거하고 파일도 제거
+
+branch(브랜치) : main(기준)
+15. git branch : 브랜치 조회
+
+16. git branch 새브랜치명 : branch 생성
+			-m 브랜치명 : branch 이름 변경
+
+17. git checkout 브랜치명 : 입력한 브랜치로 이동
+	- 단, 첫 실행 시 main 브랜치 내용이 복제가 일어남
+
+18. git merge 병합할 브랜치명 : 브랜치명과 현재 내가 있는 브랜치를 병합함
+
+19. git branch -d 브랜치명 : 해당 브랜츠 삭제
+-----------------------------------
+c:\test 버전관리 하고싶어~
+- 초기화 해 -> master 됨
+-----------------------------------
+.gitignore : git에서 무시해도 되는 파일 작성
+	ignore된 파일들은 tracked도 되지 않음
+
+merge : 가지 친 작업들을 main에 합치는 과정
+
+원격저장소(remote)
+원격저장소 == 로컬저장소
+20. git remote add 원격저장소별칭 원격저장소주소 : 로컬저장소에 원격저장소 연결, 별칭은 대개 origin 사용
+
+21. git remote remove 원격저장소별칭(origin) : 원격저장소와 연결된 로컬저장소 해제
+
+22. git push -u 원격저장소별칭 브랜치명 : 로컬저장소 => 원격저장소로 이동
+	맨 처음 push할때는 git push -u origin main
+	그 다음부터는 -u뒤로 다 생략 가능
+
+23. git pull : 원격저장소 => 로컬저장소 이동
+
+24. git clone 원격저장소주소 : 원격저장소 복제
+
+25. git remote -v : 로컬저장소와 원격저장소의 연결여부확인
+			origin  https://github.com/umdelii/java-source.git (fetch)
+			origin  https://github.com/umdelii/java-source.git (push) -> 연결돼있는거 확인!
+
+26. rm - r .git : 로컬저장소와의 연결해제 (리눅스 명령어)
+
