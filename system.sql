@@ -3,8 +3,14 @@
 -- hr이름의 사용자 생성 => c##hr
 ALTER SESSION SET "_oracle_script"=TRUE;
 
-@C:\Users\soldesk\Downloads\db-sample-schemas-main\db-sample-schemas-main\human_resources\hr_install.SQL
+--@C:\Users\soldesk\Downloads\db-sample-schemas-main\db-sample-schemas-main\human_resources\hr_install.SQL
+--
+--@C:\app\soldesk\product\21c\dbhomeXE\rdbms\admin\scott.sql
+--
+--sys AS sysdba
 
-@C:\app\soldesk\product\21c\dbhomeXE\rdbms\admin\scott.sql
+-- 권한 부여 : GRANT
+GRANT CREATE VIEW TO SCOTT;
 
-sys AS sysdba
+GRANT CREATE SYNONYM TO SCOTT;
+GRANT CREATE PUBLIC SYNONYM TO SCOTT;
