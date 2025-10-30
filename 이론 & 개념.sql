@@ -142,7 +142,7 @@ SELECT * FROM EMP e WHERE e.DEPTNO=30 OR e.JOB ='ANALYST';
  *  
  *  2) 테이블 변경(ALTER)
  *  	1. 컬럼 추가 : ADD
- *  	2. 열 이름 변경 : RENAME COLUMN % TO %
+ *  	2. 열 이름 변경 : ALTER TABLE 테이블명 RENAME COLUMN % TO %
  *  	3. 열 자료형 변경 : MODIFY
  *  	4. 컬럼 삭제 : DROP COLUMN
  * 
@@ -201,3 +201,24 @@ SELECT * FROM EMP e WHERE e.DEPTNO=30 OR e.JOB ='ANALYST';
  *  
  *  CREATE SYNONYM 객체의별칭지정 FOR 객체;
  */
+------------
+
+/* 제약 조건 (데이터 무결성 유지 : 데이터의 정확성과 일관성을 보장)
+ *  1. 빈 값을 허용하지 않는 NOT NULL
+ *  	1) 테이블 생성 시 
+ *  2. 중복값을 허용하지 않는 UNIQUE
+ *  3. 유일하게 하나만 존재하는 PRIMARY KEY (기본키)
+ *  	UNIQUE + NOT NULL 
+ *  4. 다른 테이블과 관계를 맺는 FOREIGN KEY (외래키)
+ *  	부모테이블 데이터를 먼저 입력 후 자식테이블 데이터 입력
+ *  	부모데이터 삭제 시 자식도 같이 삭제하기 - 1. ON DELETE CASCADE : 부모삭제면 자식도 삭제, 2. ON DELETE SET NULL : 부모삭제면 자식 NULL
+ *  	외래키 제약조건을 따로 지정
+ *  		
+ *  5. 특정 범위의 값만 들어올 수 있는 CHECK 
+ *  6. 기본값을 지정하는 DEFAULT
+ *  	값을 지정하지 않는 경우 자동으로 DEFAULT 값 지정
+ * 
+ */
+
+
+

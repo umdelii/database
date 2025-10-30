@@ -192,4 +192,62 @@ insert
 values ('TEST',
 '2025-10-29');
 
+insert
+	into
+	TABLE2(COL1, COL2, COL3)
+values (3,
+'TEST',
+'2025-10-29');
+
 select * from TABLE2;
+
+-- 현재 auto_increment 값 조회
+select LAST_INSERT_ID();
+
+-- auto_increment 시작값 변경
+alter table table2 auto_increment = 100;
+insert
+	into
+	TABLE2(COL2, COL3)
+values ('TEST',
+'2025-10-29');
+
+-- auto_increment 증가값 변경
+set @@AUTO_INCREMENT_INCREMENT = 5;
+insert
+	into
+	TABLE2(COL2, COL3)
+values ('TEST',
+'2025-10-29');
+
+-- 연습
+create table EXAM_INSERT_SELECT_FROM(
+COL1 INT,
+COL2 VARCHAR(10)
+);
+
+create table EXAM_INSERT_SELECT_TO(
+COL1 INT,
+COL2 VARCHAR(10)
+);
+
+insert into exam_insert_select_from values (1,'Do');
+insert into exam_insert_select_from values (2,'It');
+insert into exam_insert_select_from values (3,'MySQL');
+
+-- exam_insert_select_from 데이터 => EXAM_INSERT_SELECT_TO
+insert into EXAM_INSERT_SELECT_TO select * from exam_insert_select_from; 
+select * from EXAM_INSERT_SELECT_TO;
+
+create table exam_select_new as select * from exam_insert_select_from;
+select * from exam.exam_select_new esn ;
+
+-- date
+create table exam_date_table(
+	col1 date,
+	col2 time,
+	col3 datetime,
+	col4 timestamp
+);
+insert into exam.exam_date_table values(now(),now(),now(),now());
+SELECT * FROM exam.exam_date_table edt ;
