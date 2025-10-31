@@ -43,3 +43,13 @@
 create user 'test1'@'localhost' identified by '12345';
 grant all privileges on exam.* to 'test1'@'localhost';
 flush privileges;
+
+-- 학사관리 db 생성 및 sql 작성
+create user 'java_db'@'localhost' identified by '12345';
+grant all privileges on exam.* to 'java_db'@'localhost';
+flush privileges;
+
+
+/* select curdate(); -- 현재 날짜 확인 
+ * oracle과 다르게 from절 안써도 됨
+ * */
