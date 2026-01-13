@@ -220,5 +220,10 @@ SELECT * FROM EMP e WHERE e.DEPTNO=30 OR e.JOB ='ANALYST';
  * 
  */
 
-
+/* jpa 후 추가 개념
+ * lob(Large Object) : 대용량 데이터
+ * varchar 말고 다른 타입 (한 2000자 이렇게 쓰고싶어)할때
+ * clob(문자 대용량 데이터)
+ * blob(바이트 대용량 데이터)
+ */
 

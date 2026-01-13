@@ -53,3 +53,15 @@ flush privileges;
 /* select curdate(); -- 현재 날짜 확인 
  * oracle과 다르게 from절 안써도 됨
  * */
+
+/* jpa용 db만들기 */
+grant all privileges on springdb.* to 'java_db'@'localhost';
+flush privileges;
+
+create database if not exists movie;
+
+grant all privileges on movie.* to 'java_db'@'localhost';
+
+create user 'moa_umdelii'@'localhost' identified by '12345';
+create database if not exists moa;
+grant all privileges on moa.* to 'moa_umdelii'@'localhost';

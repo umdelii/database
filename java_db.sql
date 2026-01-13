@@ -82,3 +82,8 @@ VALUES ('20250005',
 '최혁',
 173,
 'A001');
+
+-- spring jpa
+insert into stutbl(name) values('유하람');
+select * from stutbl;
+

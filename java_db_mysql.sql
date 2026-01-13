@@ -73,3 +73,64 @@ insert into enroll(student_id ,subj_id ,enroll_date ) values ('20250001','SB-000
 -- 자동증가 auto_increment 값 변경(초기화)
 alter table enroll auto_increment = 1;
 delete from enroll where student_id = '20250001';
+
+-- 
+use springdb;
+-- 2번 고객의 주문 조회
+select * from mart_order mo where mo.member_id = 2;
+-- + 주문상품 조회
+select
+	*
+from
+	mart_order mo
+join mart_order_item moi on
+	mo.order_id = moi.order_id
+where
+	mo.member_id = 2;
+
+-- + 제품명 조회
+select
+	mo.member_id,
+	mo.order_status,
+	moi.item_id,
+	mi.name
+from
+	mart_order mo
+join mart_order_item moi on
+	mo.order_id = moi.order_id
+join mart_item mi on
+	moi.item_id = mi.item.id
+where
+	mo.member_id = 2;
+
+-- + 주문 고객의 주소정보
+select
+	mo.member_id,
+	mo.order_status,
+	moi.item_id,
+	mi.name,
+	mm.city,
+	mm.name
+from
+	mart_order mo
+join mart_order_item moi on
+	mo.order_id = moi.order_id
+join mart_item mi on
+	moi.item_id = mi.item_id
+join mart_member mm on
+	mm.member_id = mo.member_id
+where
+	mo.member_id = 2;
+
+insert into team(name) values ('team5');
+insert into team_member (name,team_id) values ('ㅁㄴㅇㄹ',1);
+delete from team_member tm where tm.name = 'team5';
+-- ㅁㄴㅇㄹ의 정보와 팀이름 조회
+select
+	*
+from
+	team_member tm
+join team t on
+	t.team_id = tm.team_id
+where
+	tm.name = 'ㅁㄴㅇㄹ';
